@@ -2,6 +2,7 @@ package AllureReport;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
@@ -44,33 +45,38 @@ public class Tests extends BaseClass{
 	}
 	
 	@Severity(SeverityLevel.BLOCKER)	
-	@Test(priority=2, description="Verify login")
-	@Description("Verify login with Valid Credentials........")
-	@Epic("EP001")
+	@Test(priority=2)
+	@Description("Verify login with different Credentials")
+	@Epic("E01")
 	@Feature("Feature2: Login")
-	@Story("Story:Valid login")
-	@Step("Verify login")
-	public void loginTest() throws InterruptedException
+	@Story("Story:PRO-45262")
+	@Step("Verify login with different password")
+	public void loginTest1() throws InterruptedException
 	{
 		driver.findElement(By.linkText("Log in")).click();
-		driver.findElement(By.id("Email")).sendKeys("pavanoltraining@gmail.com");
+		driver.findElement(By.id("Email")).sendKeys("prajjawalkansal@gmail.com");
 		driver.findElement(By.id("Password")).sendKeys("Test@123");
-		driver.findElement(By.xpath("//input[@class='button-1 login-button']")).click();
+		driver.findElement(By.xpath("//button[@class='button-1 login-button']")).submit();
 		Thread.sleep(3000);
-		Assert.assertEquals(driver.getTitle(), "nopCommerce demo store123");
+		Assert.assertEquals(driver.getTitle(), "nopCommerce demo store1");
 
 	}
 		
-	@Severity(SeverityLevel.NORMAL)	
-	@Test(priority=3, description="Verify user Registration")
-	@Description("Verify user Registration........")
-	@Epic("EP001")
-	@Feature("Feature3: Registration")
-	@Story("Story:User registration")
+	@Severity(SeverityLevel.CRITICAL)
+	@Test(priority=3)
+	@Description("Verify login with valid credentials")
+	@Epic("E01")
+	@Feature("Feature3: PRO-45262")
+	@Story("Story:Verify login with same password")
 	
-	public void registrationTest()
-	{
-		throw new SkipException("Skipping this Test");
+	public void loginTest2() throws InterruptedException {
+		driver.findElement(By.linkText("Log in")).click();
+		driver.findElement(By.id("Email")).sendKeys("prajjawalkansal1218@gmail.com");
+		driver.findElement(By.id("Password")).sendKeys("prajjawal");
+		driver.findElement(By.xpath("//button[@class='button-1 login-button']")).submit();
+		Thread.sleep(3000);
+
+		Assert.assertEquals(driver.getTitle(), "nopCommerce demo store");
 	}
 	
 
