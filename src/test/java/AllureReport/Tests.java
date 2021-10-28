@@ -71,7 +71,7 @@ public class Tests extends BaseClass{
 	
 	public void loginTest2() throws InterruptedException {
 		driver.findElement(By.linkText("Log in")).click();
-		driver.findElement(By.id("Email")).sendKeys("prajjawalkansal21@gmail.com");
+		driver.findElement(By.id("Email")).sendKeys("avadhsharma566@gmail.com");
 		driver.findElement(By.id("Password")).sendKeys("prajjawal1234");
 		driver.findElement(By.xpath("//button[@class='button-1 login-button']")).submit();
 		Thread.sleep(3000);
